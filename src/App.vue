@@ -1,13 +1,21 @@
 <template>
   <div class="app">
-    <Tweet />
+    
+    <div v-for="tweet in tweets" v-bind:key="tweet">
+    <Tweet 
+    :name=tweet.user.name
+    :image=tweet.user.image
+    :handle=tweet.user.handle
+    :timestamp=tweet.timestamp
+    :message=tweet.message
+    />
+    </div>
+    
   </div>
 </template>
 
 <script>
-
 import Tweet from './components/Tweet.vue';
-
 export default {
     data() {
       return {
@@ -42,7 +50,7 @@ export default {
         ]
        }
     },
-    components: { Tweet }
+    components: { Tweet },
 }
 </script>
 
