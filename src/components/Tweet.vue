@@ -1,23 +1,13 @@
 <template>
   <div className="tweet">
-    <img
-      :src=image
-      className="profile"
-      alt="profile"
-    />
+    <ProfileImage :image="image" />
     <div className="body">
       <div className="top">
-        <span className="user">
-          <span className="name">{{ name }}</span>
-          <span className="handle">{{ handle }}</span>
-        </span>
-
-        <span className="timestamp">{{ timestamp }}</span>
+        <User :name="name" :handle="handle" />
+        <Timestamp :time="timestamp" />
       </div>
 
-      <p className="message">
-        {{ message }}
-      </p>
+      <Message :message="message" />
 
       <div className="actions">
         <!-- Font Awesome icons -->
@@ -33,8 +23,21 @@
 </template>
 
 <script>
+import ProfileImage from "./ProfileImage.vue";
+import User from "./User.vue";
+import Timestamp from "./Timestamp.vue";
+import Message from "./Message.vue";
+import Actions from "./Actions.vue";
+
 export default {
   props: ["name", "image", "handle", "timestamp", "message"],
+  components: {
+    ProfileImage,
+    User,
+    Timestamp,
+    Message,
+    Actions,
+  },
 };
 </script>
 
